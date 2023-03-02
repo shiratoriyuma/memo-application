@@ -49,4 +49,17 @@ class MemoController extends Controller
 
         return view('home', compact('usersId', 'memoList'));
     }
+
+    public function memoUpdate(Request $request, $id)
+    {
+        $data = $request->all();
+        $user = \Auth::user();
+        $usersId = $user['id'];
+        Memo::where('id', $id)->update(['memos_text' => $data['text']]);
+
+        $memoList = Memo::where('users_id', $usersId)->get();
+
+        return view('home', compact('usersId', 'memoList'));
+
+    }
 }

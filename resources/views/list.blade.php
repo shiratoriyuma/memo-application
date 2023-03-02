@@ -17,11 +17,18 @@
                             @if(isset($memoList))
                                 @foreach($memoList as $memoLists)
                                 <tr>
-                                    <td>{{ $memoLists['memos_title'] }}</td>
-                                    <td>{{ $memoLists['memos_text'] }}</td>
                                     <td>
-                                        <button type="submit" class="btn btn-primary" onclick="location.href='/memo_delete/{{$memoLists['id']}}'">編集</button>
+                                        {{ $memoLists['memos_title'] }}
                                     </td>
+                                    <form method="POST" action="?">
+                                        @csrf
+                                        <td>
+                                            <input type="text" class="form-control" name="text" value="{{$memoLists['memos_text']}}">
+                                        </td>
+                                        <td>
+                                            <button type="submit" class="btn btn-primary" formaction="/memo_update/{{$memoLists['id']}}">編集</button>
+                                        </td>
+                                    </form>
                                     <td>
                                         <button type="submit" class="btn btn-primary" onclick="location.href='/memo_delete/{{$memoLists['id']}}'">削除</button>
                                     </td>

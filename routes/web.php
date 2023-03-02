@@ -24,3 +24,4 @@ Auth::routes();
 Route::get('/home', [HomeController::class, 'index'])->name('home');
 Route::post('/memo_register/{id}', [MemoController::class, 'memoRegister'])->name('home');
 Route::get('/memo_delete/{id}', [MemoController::class, 'memoDelete'])->name('home');
+Route::post('/memo_update/{id}',[MemoController::class,'memoUpdate'])->name('home');
