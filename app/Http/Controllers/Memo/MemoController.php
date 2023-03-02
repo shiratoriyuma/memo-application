@@ -34,6 +34,19 @@ class MemoController extends Controller
             'memos_text' => $data['text']
         ]);
 
-        return view('home', compact('usersId'));
+        $memoList = Memo::where('users_id', $usersId)->get();
+
+        return view('home', compact('usersId', 'memoList'));
+    }
+
+    public function memoDelete($id)
+    {
+        Memo::where('id', $id)->delete();
+        $user = \Auth::user();
+        $usersId = $user['id'];
+
+        $memoList = Memo::where('users_id', $usersId)->get();
+
+        return view('home', compact('usersId', 'memoList'));
     }
 }

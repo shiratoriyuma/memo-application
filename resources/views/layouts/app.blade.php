@@ -74,12 +74,17 @@
                 </div>
             </div>
         </nav>
-        <div class="py-4">
-        @if(isset($usersId))
-            @include('register')
-        @else
-            @yield('content')
-        @endif
+        <div class="py-2">
+            @if(isset($usersId))
+                <div class="py-2">
+                    @include('register')
+                </div>
+                <div class="py-2">
+                    @include('list')
+                </div>
+            @else
+                @yield('content')
+            @endif
         </div>
     </div>
 </body>
